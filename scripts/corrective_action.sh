@@ -38,7 +38,7 @@ case $SELFHEAL_TYPE in
         CM_INTERFACE=`sysevent get current_wan_ifname`
 	if [ "$CM_INTERFACE" = "" ]
         then
-            CM_INTERFACE=erouter0
+            CM_INTERFACE=`syscfg get wan_physical_ifname`
         fi		
         if [ -f $ADVSEC_PATH ]
         then
@@ -117,7 +117,8 @@ getCMMac()
         "BASE")
             if [ "$CMMac" = "" ]
             then
-               CMMac=`ifconfig erouter0 | grep HWaddr | cut -d" " -f7`
+			   wan_name=`syscfg get wan_physical_ifname`
+               CMMac=`ifconfig  $wan_name | grep HWaddr | cut -d" " -f7`
             fi
         ;;
         "SYSTEMD")
