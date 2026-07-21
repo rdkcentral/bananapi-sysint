@@ -31,7 +31,7 @@ rand_num_old=""
 WAN_INTERFACE=`sysevent get current_wan_ifname`
 if [ "$WAN_INTERFACE" = "" ] 
 then
-     WAN_INTERFACE="erouter0"
+     WAN_INTERFACE=`syscfg get wan_physical_ifname`
 fi	
 
 calcRandom=1
@@ -177,7 +177,8 @@ runPingTest()
 	#If GW IPv6 is missing in both route list and neighbour list checking for Link Local GW ipv6 in neighbour list and    	
 	#Checking if route list returns Box_IPv6_addr as IPv6_Gateway_addr	
 
-	Box_IPv6_addr=`ifconfig erouter0 | grep inet6 | grep Global | awk '{print $(NF-1)}' | cut -f1 -d\/`	
+    wan_name=`syscfg get wan_physical_ifname`
+	Box_IPv6_addr=`ifconfig $wan_name | grep inet6 | grep Global | awk '{print $(NF-1)}' | cut -f1 -d\/`	
 	
         if [ "$IPv6_Gateway_addr" = "" ] || [ "$IPv6_Gateway_addr" = "$Box_IPv6_addr" ]
 	then
