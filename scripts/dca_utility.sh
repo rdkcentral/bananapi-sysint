@@ -223,7 +223,8 @@ getEstbMac()
           estbMac=`/usr/bin/rpcclient $ARM_ARPING_IP "ifconfig erouter0" | grep 'Link encap:' | cut -d ' ' -f7`
           echo "$estbMac"
        else
-          estbMac=`ifconfig erouter0 | grep 'Link encap:' | cut -d ' ' -f7`
+          wan_name=`syscfg get wan_physical_ifname`
+          estbMac=`ifconfig $wan_name | grep 'Link encap:' | cut -d ' ' -f7`
           echo "$estbMac"
        fi
     fi
