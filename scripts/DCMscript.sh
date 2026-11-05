@@ -68,7 +68,7 @@ DCMRESPONSE="$PERSISTENT_PATH/DCMresponse.txt"
 T2_RESPONSE="$T2_XCONF_PERSISTENT_PATH/DCMresponse.txt"
 TELEMETRY_TEMP_RESEND_FILE="/rdklogs/logs/.temp_resend.txt"
 
-PEER_COMM_ID="/tmp/elxrretyt.swr"
+PEER_COMM_ID="/tmp/interchip"
 FORMATTED_TMP_DCM_RESPONSE='/tmp/DCMSettings.conf'
 TELEMETRY_PREVIOUS_LOG_COMPLETE="/tmp/.telemetry_previous_log_done"
 TELEMETRY_PREVIOUS_LOG="/tmp/.telemetry_previous_log"
